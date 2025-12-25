@@ -9,18 +9,18 @@ A comprehensive machine learning pipeline for binary income classification imple
 [![Optuna](https://img.shields.io/badge/Optuna-Latest-blue.svg)](https://optuna.org/)
 [![License](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
 
-## 🎯 Project Objective
+##  Project Objective
 
 This project addresses the binary classification challenge of predicting whether an individual's income exceeds $50,000 based on demographic and work-related features from the Adult Census Income dataset. The implementation employs advanced machine learning techniques including:
 
-- **🔧 Advanced Feature Engineering** - 20+ engineered features with domain expertise
-- **⚖️ Multiple Class Imbalance Strategies** - SMOTE, ADASYN, SMOTEENN implementations  
-- **🎯 Bayesian Hyperparameter Optimization** - BayesSearchCV with Optuna methodological comparison
-- **🔗 Ensemble Methods** - Voting, Stacking, and Weighted averaging approaches
-- **🔍 Model Interpretability** - SHAP analysis and permutation importance
-- **💰 Business-Oriented Optimization** - Threshold optimization for profit maximization
+- ** Advanced Feature Engineering** - 20+ engineered features with domain expertise
+- ** Multiple Class Imbalance Strategies** - SMOTE, ADASYN, SMOTEENN implementations  
+- ** Bayesian Hyperparameter Optimization** - BayesSearchCV with Optuna methodological comparison
+- ** Ensemble Methods** - Voting, Stacking, and Weighted averaging approaches
+- ** Model Interpretability** - SHAP analysis and permutation importance
+- ** Business-Oriented Optimization** - Threshold optimization for profit maximization
 
-## 🏆 Key Results & Performance
+## Key Results & Performance
 
 ### Model Performance (F1-Score at Optimal Threshold)
 | Model Configuration | Best F1-Score | ROC-AUC | Training Strategy | Optimal Threshold |
@@ -42,9 +42,9 @@ This project addresses the binary classification challenge of predicting whether
 - **Final Selected Features**: 31 (via SelectKBest with f_classif)
 - **Performance Improvement**: 18% F1-score improvement over baseline
 
-## 🔬 Technical Architecture
+##  Technical Architecture
 
-### 📊 Repository Structure
+###  Repository Structure
 ```
 income_census_analysis/
 ├── 📁 src/                           # Core source code modules
@@ -64,14 +64,14 @@ income_census_analysis/
 └── 📄 LICENSE                        # MIT License
 ```
 
-### 🧩 Module-by-Module Implementation
+###  Module-by-Module Implementation
 
-#### 📁 `src/config/` - Global Configuration
+#### `src/config/` - Global Configuration
 - **Global Constants**: `RANDOM_STATE=123`, `TEST_SIZE=0.3`, `CV_FOLDS=5`
 - **Library Availability Checks**: XGBoost, LightGBM, Optuna, SHAP, imbalanced-learn
 - **Smart Iteration Allocation**: Model-specific optimization budgets
 
-#### 📁 `src/data/` - Data Pipeline
+#### `src/data/` - Data Pipeline
 - **Data Loading**: Comprehensive EDA with visualization generation
 - **Feature Engineering**: 22 new features including:
   - Age-based: `age_group`, `age_squared`, `experience_proxy`
@@ -81,13 +81,13 @@ income_census_analysis/
   - Statistical: `workclass_income_rate`, `occupation_income_rate`
   - Anomaly: `is_outlier`, `outlier_score` (IsolationForest)
 
-#### 📁 `src/preprocessing/` - Data Preparation
+####  `src/preprocessing/` - Data Preparation
 - **Feature Selection**: SelectKBest with f_classif (70% feature retention)
 - **Scaling & Encoding**: StandardScaler + OneHotEncoder pipeline
 - **Class Balancing**: 4 strategies (Original, SMOTE, ADASYN, SMOTEENN)
 - **Cross-Validation**: Stratified 5-fold × 3 repeats
 
-#### 📁 `src/models/` - Model Configuration
+####  `src/models/` - Model Configuration
 ```python
 # Traditional Models (Required)
 - Logistic Regression: L1/L2 regularization, balanced weights
@@ -100,34 +100,34 @@ income_census_analysis/
 - LightGBM: categorical support, efficient training
 ```
 
-#### 📁 `src/optimization/` - Hyperparameter Tuning
+####  `src/optimization/` - Hyperparameter Tuning
 - **Primary Strategy**: BayesSearchCV (when scikit-optimize available)
 - **Fallback Strategy**: RandomizedSearchCV with smart iteration allocation
 - **Optuna Integration**: TPE, CMA-ES, Random samplers with Hyperband pruning
 - **Custom Scoring**: 40% F1 + 40% ROC-AUC + 20% Balanced Accuracy
 
-#### 📁 `src/evaluation/` - Performance Assessment
+####  `src/evaluation/` - Performance Assessment
 - **Comprehensive Metrics**: F1, ROC-AUC, Precision, Recall, MCC, Balanced Accuracy
 - **Business Metrics**: Profit optimization with cost-sensitive analysis
 - **Threshold Optimization**: 100 thresholds (0.01-0.99) for maximum profit
 - **Model Interpretability**: SHAP analysis, permutation importance, stability assessment
 
-#### 📁 `src/ensemble/` - Ensemble Methods
+####  `src/ensemble/` - Ensemble Methods
 - **Voting Classifier**: Soft voting across top 5 models
 - **Stacking Classifier**: LogisticRegression meta-learner with 5-fold CV
 - **Weighted Average**: Performance-weighted probability aggregation
 
-#### 📁 `src/visualization/` - Analysis & Plotting
+####  `src/visualization/` - Analysis & Plotting
 - **EDA Visualizations**: Target distribution, feature correlations, outlier analysis
 - **Performance Plots**: ROC curves, confusion matrices, threshold optimization
 - **Interpretability Charts**: Feature importance, SHAP summaries, stability analysis
 
-#### 📁 `src/utils/` - Supporting Functions
+####  `src/utils/` - Supporting Functions
 - **Model Cards**: Automated documentation generation
 - **Project Summary**: Comprehensive results compilation
 - **Export Functions**: Model saving, results persistence
 
-## 🚀 Quick Start
+##  Quick Start
 
 ### Installation & Setup
 ```bash
@@ -170,7 +170,7 @@ models_config = setup_advanced_models(preprocessing_results['class_weight_dict']
                                      preprocessing_results['y_train'])
 ```
 
-## 🎯 Feature Engineering Deep Dive
+## Feature Engineering Deep Dive
 
 ### Occupation Categorization (Domain Knowledge)
 ```python
@@ -216,7 +216,7 @@ df['work_efficiency'] = df['hours-per-week'] / (df['age'] + 1)
 df['experience_proxy'] = np.maximum(df['age'] - df['education-num'] - 5, 0)
 ```
 
-## 📊 Performance Analysis
+##  Performance Analysis
 
 ### Model Comparison Results
 ```python
@@ -317,7 +317,7 @@ python scripts/extract_notebook_pipeline.py --data-path tests/sample_data.csv
 - **Logging**: Detailed progress tracking and debugging information
 - **Reproducibility**: Fixed random seeds and deterministic processes
 
-## 📈 Expected Results
+##  Expected Results
 
 ### Performance Benchmarks
 - **F1-Score Range**: 0.83 - 0.86 (depending on model and sampling strategy)
@@ -332,20 +332,10 @@ python scripts/extract_notebook_pipeline.py --data-path tests/sample_data.csv
 - **Model Training**: Parallel processing with n_jobs=-1
 - **Cross-Validation**: Efficient stratified sampling
 
-## 📄 License
+##  License
 
 This project is licensed under the AGPL License - see the [LICENSE](LICENSE) file for details.
 
-## 🙏 Acknowledgments
 
-- **UCI Machine Learning Repository** - Adult Census Income dataset
-- **Scikit-learn Community** - Comprehensive ML framework  
-- **XGBoost & LightGBM Teams** - Advanced gradient boosting
-- **Optuna Developers** - State-of-the-art hyperparameter optimization
-- **SHAP Contributors** - Model interpretability framework
 
 ---
-
-⭐ **Star this repository if you find it useful for your machine learning projects!**
-
-📧 **Questions?** Open an issue or contribute to make this project even better!
